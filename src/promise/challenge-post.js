@@ -8,12 +8,12 @@ function postData(urlAPI, data) {
     con la configuracion adecuda*/
     const response = fetch(urlAPI, {
         method: "POST", // Metodo HTTP a usar
-        mode: "cors",
-        credentials: "same-origin",
+        mode: "cors", // Permitimos solicitudes de origen cruzado.
+        credentials: "same-origin", // La identificacion a usar es este mismo orgien
         headers: {  // Le indicamos que el contenido es tipo JSON
             "Content-Type": "application/json",
         },
-        // El contenido si, que lo convertimos a string para poder mandarlo
+        // El contenido en si, lo convertimos a string para poder mandarlo
         body: JSON.stringify(data),
     });
     return response; // Regresamos la promesa con la respuesta a la peticion
@@ -23,10 +23,15 @@ function postData(urlAPI, data) {
 function deleteData(urlAPI) {
     return fetch(urlAPI, {
         method: "DELETE",
+        mode: "cors",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
 }
 
-// Creamos el objeto a enviar, segun la documentacionde Platzi Fake Store API
+// Creamos el objeto a enviar, segun la documentacion de Platzi Fake Store API
 const data = {
     "title": "212",
     "price": 212,
